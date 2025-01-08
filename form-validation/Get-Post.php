@@ -31,16 +31,38 @@
     </div>
   </div>
 </nav>
-<div class="container">
-    <h1>Please enter your email and password</h1>
-<div class="form-floating mt-3">
-  <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-  <label for="floatingInput">Email address</label>
-</div>
-<div class="form-floating mt-3">
-  <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-  <label for="floatingPassword">Password</label>
-</div>
+
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST')  {
+     $email = $_POST['email'];
+     $password = $_POST['pass'];
+     echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Succes</strong> your email '. $email.' and password ' . $password.' has been submitted successfully!
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>';
+
+//submit these to database
+
+}
+
+?>
+
+
+<div class="container mt-3">
+<form action="/php.practice/form-validation/Get-Post.php?" method="post">
+  <h1>Please enter your email and password</h1>
+  <div class="mb-3">
+    <label for="email" class="form-label">Email address</label>
+    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  <div class="mb-3">
+    <label for="pass" class="form-label">Password</label>
+    <input type="password" name="pass" class="form-control" id="exampleInputPassword1">
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
